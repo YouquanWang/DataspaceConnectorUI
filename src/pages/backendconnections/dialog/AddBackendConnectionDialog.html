@@ -1,8 +1,7 @@
 <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" elevation="1" color="primary"
-            class="buttontext--text addbackendconnectionbutton" @click="addButtonClicked">Add Backend
-            Connection
+            class="buttontext--text addbackendconnectionbutton" @click="addButtonClicked">{{ $t('Add Backend Connection') }}
         </v-btn>
     </template>
 
@@ -12,15 +11,13 @@
         </v-card-title>
         <v-card-text>
             <v-form v-model="valid" ref="form">
-                <v-text-field label="Title" v-model="name">
+                <v-text-field :label="$t('Title')" v-model="name">
                 </v-text-field>
-                <v-text-field label="Description" v-model="desc">
+                <v-text-field :label="$t('Description')" v-model="desc">
                 </v-text-field>
-                <v-select label="Source Type" v-model="sourceType" :items="sourceTypes" v-if="!editMode"></v-select>
-                <p v-if="editMode" class="abc-dialog-sourcetype-label">Source Type: {{ sourceType }}</p>
-                <p v-if="sourceType === 'Other'" class="abc-dialog-note">Note: Per default, only the HTTP and SQL
-                    Camel component are present in the Dataspace Connector. In order to use any other Camel component,
-                    e.g. File, the dependency for that component has to be added to the pom.xml first! <a
+                <v-select :label="$t('Source Type')" v-model="sourceType" :items="sourceTypes" v-if="!editMode"></v-select>
+                <p v-if="editMode" class="abc-dialog-sourcetype-label">{{ $t('Source Type') }}: {{ sourceType }}</p>
+                <p v-if="sourceType === 'Other'" class="abc-dialog-note">{{ $t('Note: Per default, only the HTTP and SQL Camel component are present in the Dataspace Connector. In order to use any other Camel component, e.g. File, the dependency for that component has to be added to the pom.xml first!')}} <a
                         href="https://international-data-spaces-association.github.io/DataspaceConnector/CommunicationGuide/v6/Camel"
                         target="_blank">(See
                         documentation)</a></p>
@@ -28,19 +25,19 @@
                 </v-text-field>
                 <v-text-field v-if="sourceType === 'Database'" label="URL" v-model="url" :rules="requiredRule">
                 </v-text-field>
-                <v-text-field v-if="sourceType === 'Database'" label="SQL Query" v-model="camelSqlUri" :rules="requiredRule">
+                <v-text-field v-if="sourceType === 'Database'" :label="$t('SQL Query')" v-model="camelSqlUri" :rules="requiredRule">
                 </v-text-field>
-                <v-text-field v-if="sourceType === 'Database'" label="Driver class name" v-model="driverClassName" :rules="requiredRule">
+                <v-text-field v-if="sourceType === 'Database'" :label="$t('Driver class name')" v-model="driverClassName" :rules="requiredRule">
                 </v-text-field>
-                <v-text-field v-if="sourceType === 'Other'" label="Camel component URI" v-model="camelSqlUri">
+                <v-text-field v-if="sourceType === 'Other'" :label="$t('Camel component URI')" v-model="camelSqlUri">
                 </v-text-field>
-                <div class="text-h6 text-color" v-if="sourceType === 'Database' || sourceType === 'REST'">Authentication</div>
+                <div class="text-h6 text-color" v-if="sourceType === 'Database' || sourceType === 'REST'">{{$t('Authentication')}}</div>
                 <v-tabs class="pagestab" v-model="active_tab" ref="pagestab" hide-slider v-if="sourceType === 'Database' || sourceType === 'REST'">
 
-                    <v-tab>Basic</v-tab>
+                    <v-tab>{{ $t('Basic') }}</v-tab>
                     <v-tab-item :eager="true">
-                        <v-text-field label="Username" v-model="username"> </v-text-field>
-                        <v-text-field label="Password" v-model="password" :type="showPassword ? 'text' : 'password'"
+                        <v-text-field :label="$t('Username')" v-model="username"> </v-text-field>
+                        <v-text-field :label="$t('Password')" v-model="password" :type="showPassword ? 'text' : 'password'"
                                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                                       @click:append="showPassword = !showPassword">
                         </v-text-field>
@@ -52,7 +49,7 @@
                         <v-text-field label="Header value" v-model="authHeaderValue"> </v-text-field>
                     </v-tab-item>
 
-                    <v-tab v-if="sourceType === 'REST'">None</v-tab>
+                    <v-tab v-if="sourceType === 'REST'">{{ $t('None') }}</v-tab>
                     <v-tab-item v-if="sourceType === 'REST'" :eager="true"></v-tab-item>
                 </v-tabs>
             </v-form>
@@ -63,10 +60,10 @@
         <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn color="primary" @click="cancelBackendConnection">
-                Cancel
+                {{ $t('Cancel') }}
             </v-btn>
             <v-btn color="primary" @click="saveBackendConnection" :disabled="!valid">
-                Save
+                {{ $t('Save') }}
             </v-btn>
         </v-card-actions>
     </v-card>

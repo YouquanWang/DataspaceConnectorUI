@@ -23,7 +23,7 @@ export default {
         addButtonClicked() {
             this.$data.urlReadOnly = false;
             this.$data.currentAppStore = null;
-            this.$data.title = "Add App Store";
+            this.$data.title = this.$t("Add App Store");
             this.$data.appstoreTitle = "";
             this.$data.url = "";
         },
@@ -40,7 +40,7 @@ export default {
             this.$emit('appstoreSaved');
         },
         edit(appstore) {
-            this.$data.title = "Edit App Store"
+            this.$data.title = this.$t("Edit App Store")
             this.$data.urlReadOnly = true;
             this.$data.currentAppStore = appstore;
             this.$data.url = appstore.location;

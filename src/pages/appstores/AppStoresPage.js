@@ -13,7 +13,7 @@ export default {
         return {
             search: '',
             headers: [{
-                text: 'Title',
+                text: this.$t('Title'),
                 value: 'title'
             }, {
                 text: 'URL',

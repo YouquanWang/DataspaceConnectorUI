@@ -32,7 +32,7 @@ export default {
     methods: {
         addButtonClicked() {
             this.$data.editMode = false;
-            this.$data.title = "Add Data Source";
+            this.$data.title = this.$t("Add Data Source");
             this.$data.currentEndpoint = null;
             this.$data.name="";
             this.$data.desc="";
@@ -81,14 +81,14 @@ export default {
                         this.$data.authHeaderValue, this.$data.sourceType.toUpperCase(), this.$data.driverClassName, this.$data.camelSqlUri);
                 } catch (error) {
                     console.log("Error on saveBackendConnection(): ", error);
-                    this.$root.$emit('error', "Update backend connection failed.");
+                    this.$root.$emit('error', this.$t("Update backend connection failed."));
                 }
                 this.$emit('backendConnectionSaved');
             }
         },
         async edit(endpoint) {
             this.$data.editMode = true;
-            this.$data.title = "Edit Backend Connection";
+            this.$data.title = this.$t("Edit Backend Connection");
             this.$data.currentEndpoint = endpoint;
             this.$data.name = endpoint.title;
             this.$data.desc = endpoint.description;

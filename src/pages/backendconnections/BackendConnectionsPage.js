@@ -13,14 +13,14 @@ export default {
         return {
             search: '',
             headers: [{
-                text: 'Title',
+                text: this.$t('Title'),
                 value: 'title'
             },{
                 text: 'URL',
                 value: 'accessUrl'
             },
             {
-                text: 'Type',
+                text: this.$t('Type'),
                 value: 'dataSource.type'
             },
             {
@@ -44,16 +44,16 @@ export default {
                 this.$forceUpdate();
                 this.$root.$emit('showBusyIndicator', false);
             } catch (error) {
-                errorUtils.showError(error, "Get backend connections");
+                errorUtils.showError(error, this.$t("Get backend connections"));
             }
         },
         backendConnectionSaved() {
             this.getGenericEndpoints();
         },
         deleteItem(item) {
-            this.$refs.confirmationDialog.title = "Delete Backend Connection";
-            this.$refs.confirmationDialog.text = "Are you sure you want to delete the Backend Connection '" + item.title +"'?";
-            this.$refs.confirmationDialog.text2 = "Associated routes will be deleted too.";
+            this.$refs.confirmationDialog.title = this.$t("Delete Backend Connection");
+            this.$refs.confirmationDialog.text = `${this.$t('Are you sure you want to delete the Backend Connection')} '"` + item.title +"'?";
+            this.$refs.confirmationDialog.text2 = this.$t("Associated routes will be deleted too.");
             this.$refs.confirmationDialog.callbackData = {
                 item: item
             };

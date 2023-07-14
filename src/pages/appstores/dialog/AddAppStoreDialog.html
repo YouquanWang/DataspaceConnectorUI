@@ -1,7 +1,7 @@
 <v-dialog v-model="dialog" width="500">
     <template v-slot:activator="{ on, attrs }">
         <v-btn v-bind="attrs" v-on="on" elevation="1" color="primary"
-            class="buttontext--text addbackendconnectionbutton" @click="addButtonClicked">Add App Store
+            class="buttontext--text addbackendconnectionbutton" @click="addButtonClicked">{{ $t('Add App Store')}}
         </v-btn>
     </template>
 
@@ -12,7 +12,7 @@
             </v-card-title>
 
             <v-card-text>
-                <v-text-field label="Title" v-model="appstoreTitle" :rules="defaultRule"> </v-text-field>
+                <v-text-field :label="$t('Title')" v-model="appstoreTitle" :rules="defaultRule"> </v-text-field>
                 <p v-if="urlReadOnly">URL: {{url}}</p>
                 <v-text-field label="URL" v-model="url" :rules="urlRule" :readonly="urlReadOnly" v-if="!urlReadOnly">
                 </v-text-field>
@@ -23,7 +23,7 @@
             <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="primary" @click="saveAppStore" :disabled="!valid">
-                    Save
+                    {{ $t('Save') }}
                 </v-btn>
             </v-card-actions>
         </v-card>

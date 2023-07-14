@@ -12,18 +12,18 @@ export default {
         return {
             search: '',
             headers: [{
-                text: 'Title',
+                text: this.$t('Title'),
                 value: 'title'
             },
             {
-                text: 'Keywords',
+                text: this.$t('Keywords'),
                 value: 'keywords'
             }, {
-                text: 'Publisher',
+                text: this.$t('Publisher'),
                 value: 'publisher'
             },
             {
-                text: 'App Store',
+                text: this.$t('App Store'),
                 value: 'appStore'
             },
             {
